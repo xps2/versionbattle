@@ -116,7 +116,7 @@ echo -n > $SCRAPEFILE
 if [ -f instances.list ]; then
   xargs -n1 -P$PROC -I % bash -c "crawl $INSTANCE %" < instances.list
 else
-  curl -s https://instances.mastodon.xyz/instances.json | jq -r '.[].name' > .instances.list
+  curl -s https://instances.social/instances.json | jq -r '.[].name' > .instances.list
   xargs -n1 -P$PROC -I % bash -c "crawl $INSTANCE %" < .instances.list
   rm -f .instances.list
 fi
